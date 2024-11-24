@@ -42,7 +42,7 @@ score = 0
 
 # Aika, joka menee ennen pelin loppumista, kun mato syö ruoan
 last_food_time = 0
-food_timeout = 10  # 10 sekuntia
+food_timeout = 2  # 2 sekuntia
 
 # Funktio pistemäärän näyttämiseen
 def show_score(choice, color, font, size):
@@ -173,6 +173,10 @@ def main_game():
 
         # Aseta pelin nopeus
         clock.tick(snake_speed)
+
+        # Lisää pistemäärä output.txt-tiedostoon
+        with open('output.txt', 'w') as f:
+            f.write(f'Pisteet: {score}\n')
 
 # Käynnistä peli
 main_game()

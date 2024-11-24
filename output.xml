@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.0 on win32)" generated="20241124 12:43:32.543" rpa="false" schemaversion="4">
-<suite id="s1" name="Test Game" source="C:\Users\attem\OneDrive\Työpöytä\Python game\tests\test_game.robot">
-<test id="s1-t1" name="Game Starts Correctly" line="9">
+<robot generator="Robot 6.1.1 (Python 3.11.0 on win32)" generated="20241124 13:06:40.752" rpa="false" schemaversion="4">
+<suite id="s1" name="Test Game State" source="C:\Users\attem\OneDrive\Työpöytä\Python game\tests\test_game_state.robot">
+<test id="s1-t1" name="Score Increases When Food Is Eaten" line="10">
 <kw name="Start Game Process">
 <kw name="Start Process" library="Process">
 <arg>python</arg>
@@ -9,47 +9,41 @@
 <arg>stdout=output.txt</arg>
 <arg>stderr=output.txt</arg>
 <doc>Starts a new process on background.</doc>
-<msg timestamp="20241124 12:43:32.584" level="INFO">Starting process:
+<msg timestamp="20241124 13:06:40.792" level="INFO">Starting process:
 python "C:/Users/attem/OneDrive/Työpöytä/Python game/Snake.py"</msg>
-<status status="PASS" starttime="20241124 12:43:32.583" endtime="20241124 12:43:32.593"/>
+<status status="PASS" starttime="20241124 13:06:40.791" endtime="20241124 13:06:40.801"/>
 </kw>
-<status status="PASS" starttime="20241124 12:43:32.583" endtime="20241124 12:43:32.593"/>
+<status status="PASS" starttime="20241124 13:06:40.791" endtime="20241124 13:06:40.802"/>
 </kw>
-<kw name="Check If Game Process Is Running">
-<kw name="Wait For Process" library="Process">
-<doc>Waits for the process to complete or to reach the given timeout.</doc>
-<msg timestamp="20241124 12:43:32.594" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20241124 12:43:36.821" level="INFO">Process completed.</msg>
-<status status="PASS" starttime="20241124 12:43:32.594" endtime="20241124 12:43:36.821"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241124 13:06:45.803" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20241124 13:06:40.802" endtime="20241124 13:06:45.803"/>
 </kw>
+<kw name="Check Score Increases">
+<doc>Varmistetaan, että pistemäärä on kasvanut odotetusti.</doc>
 <kw name="Get File" library="OperatingSystem">
 <var>${output}</var>
 <arg>output.txt</arg>
 <doc>Returns the contents of a specified file.</doc>
-<msg timestamp="20241124 12:43:36.821" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\attem\OneDrive\Työpöytä\Python game\output.txt"&gt;C:\Users\attem\OneDrive\Työpöytä\Python game\output.txt&lt;/a&gt;'.</msg>
-<msg timestamp="20241124 12:43:36.832" level="INFO">${output} = pygame 2.6.1 (SDL 2.28.4, Python 3.11.0)
-Hello from the pygame community. https://www.pygame.org/contribute.html
+<msg timestamp="20241124 13:06:45.804" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\attem\OneDrive\Työpöytä\Python game\output.txt"&gt;C:\Users\attem\OneDrive\Työpöytä\Python game\output.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20241124 13:06:45.805" level="INFO">${output} = Pisteet: 10
 </msg>
-<status status="PASS" starttime="20241124 12:43:36.821" endtime="20241124 12:43:36.832"/>
+<status status="PASS" starttime="20241124 13:06:45.804" endtime="20241124 13:06:45.805"/>
 </kw>
-<kw name="Should Not Contain" library="BuiltIn">
+<kw name="Should Contain" library="BuiltIn">
 <arg>${output}</arg>
-<arg>Traceback</arg>
-<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
-<status status="PASS" starttime="20241124 12:43:36.832" endtime="20241124 12:43:36.832"/>
+<arg>Pisteet: 10</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20241124 13:06:45.805" endtime="20241124 13:06:45.806"/>
 </kw>
-<kw name="Should Not Contain" library="BuiltIn">
-<arg>${output}</arg>
-<arg>Error</arg>
-<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
-<status status="PASS" starttime="20241124 12:43:36.832" endtime="20241124 12:43:36.832"/>
+<status status="PASS" starttime="20241124 13:06:45.804" endtime="20241124 13:06:45.806"/>
 </kw>
-<status status="PASS" starttime="20241124 12:43:32.593" endtime="20241124 12:43:36.832"/>
-</kw>
-<doc>Testaa, että peli käynnistyy ilman virheitä.</doc>
-<status status="PASS" starttime="20241124 12:43:32.582" endtime="20241124 12:43:36.833"/>
+<doc>Testaa, että pistemäärä kasvaa, kun mato syö ruokaa.</doc>
+<status status="PASS" starttime="20241124 13:06:40.791" endtime="20241124 13:06:45.806"/>
 </test>
-<status status="PASS" starttime="20241124 12:43:32.545" endtime="20241124 12:43:36.835"/>
+<status status="PASS" starttime="20241124 13:06:40.754" endtime="20241124 13:06:45.807"/>
 </suite>
 <statistics>
 <total>
@@ -58,7 +52,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Test Game">Test Game</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test Game State">Test Game State</stat>
 </suite>
 </statistics>
 <errors>
