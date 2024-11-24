@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.0 on win32)" generated="20241124 12:43:32.543" rpa="false" schemaversion="4">
+<suite id="s1" name="Test Game" source="C:\Users\attem\OneDrive\Työpöytä\Python game\tests\test_game.robot">
+<test id="s1-t1" name="Game Starts Correctly" line="9">
+<kw name="Start Game Process">
+<kw name="Start Process" library="Process">
+<arg>python</arg>
+<arg>${GAME_SCRIPT}</arg>
+<arg>stdout=output.txt</arg>
+<arg>stderr=output.txt</arg>
+<doc>Starts a new process on background.</doc>
+<msg timestamp="20241124 12:43:32.584" level="INFO">Starting process:
+python "C:/Users/attem/OneDrive/Työpöytä/Python game/Snake.py"</msg>
+<status status="PASS" starttime="20241124 12:43:32.583" endtime="20241124 12:43:32.593"/>
+</kw>
+<status status="PASS" starttime="20241124 12:43:32.583" endtime="20241124 12:43:32.593"/>
+</kw>
+<kw name="Check If Game Process Is Running">
+<kw name="Wait For Process" library="Process">
+<doc>Waits for the process to complete or to reach the given timeout.</doc>
+<msg timestamp="20241124 12:43:32.594" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20241124 12:43:36.821" level="INFO">Process completed.</msg>
+<status status="PASS" starttime="20241124 12:43:32.594" endtime="20241124 12:43:36.821"/>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<var>${output}</var>
+<arg>output.txt</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20241124 12:43:36.821" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\attem\OneDrive\Työpöytä\Python game\output.txt"&gt;C:\Users\attem\OneDrive\Työpöytä\Python game\output.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20241124 12:43:36.832" level="INFO">${output} = pygame 2.6.1 (SDL 2.28.4, Python 3.11.0)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+</msg>
+<status status="PASS" starttime="20241124 12:43:36.821" endtime="20241124 12:43:36.832"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${output}</arg>
+<arg>Traceback</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20241124 12:43:36.832" endtime="20241124 12:43:36.832"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${output}</arg>
+<arg>Error</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20241124 12:43:36.832" endtime="20241124 12:43:36.832"/>
+</kw>
+<status status="PASS" starttime="20241124 12:43:32.593" endtime="20241124 12:43:36.832"/>
+</kw>
+<doc>Testaa, että peli käynnistyy ilman virheitä.</doc>
+<status status="PASS" starttime="20241124 12:43:32.582" endtime="20241124 12:43:36.833"/>
+</test>
+<status status="PASS" starttime="20241124 12:43:32.545" endtime="20241124 12:43:36.835"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test Game">Test Game</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
